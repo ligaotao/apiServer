@@ -1,0 +1,54 @@
+const request = require('superagent')
+const cheerio = require('cheerio')
+require('superagent-charset')(request)
+
+class Movies {
+  constructor () {
+    this.root = 'http://www.dytt8.net/'
+  }
+  async homeHtmlList () {
+    return request.get(`${this.root}index.htm`).charset('gbk')
+  }
+  async list (movieKey) {
+    let res = await this.homeHtmlList()
+    const $ = cheerio.load(res.res.text)
+    const $bdr = $('.bd3r .bd3rl').toArray()
+    var arrList = []
+    $bdr.forEach(k => {
+      var dom = $(k).find('.co_area2')
+      dom.each((ii, kk) => {
+        arrList.push(kk)
+      })
+    })
+    // rightDom.push($('.bd3rl').eq(1).find('.co_area2').toArray())
+    var movie = {
+      newMovie: [],
+      xunLei: [],
+      dianShiCn: [],
+      dianShiUs: [],
+      xunLeiZongYi: [],
+      DongMan: []
+    }
+    var list = ['newMovie', 'xunLei', 'dianShiCn', 'dianShiUs', 'xunLeiZongYi', 'DongMan']
+    // 最新电影 迅雷电影 华语剧集 欧美剧集
+    list.forEach((k, i) => {
+      var $dom = $(arrList[i]).find('table td:first-child')
+      $dom.each((ii, kk) => {
+        var dom = $(kk).find('a').eq(1)
+        var txt = dom.text()
+        var url = dom.attr('href')
+        movie[k].push({
+          txt,
+          url
+        })
+      })
+    })
+    if (movieKey && movieKey in movie) {
+      return movie[movieKey]
+    } else {
+      return movie
+    }
+  }
+}
+
+module.exports = new Movies()

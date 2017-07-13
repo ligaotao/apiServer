@@ -17,8 +17,11 @@
   },
   "homepage": "https://github.com/ligaotao/apiServer#readme",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "koa": "^2.3.0",
     "koa-router": "^7.2.1",
-    "koa2-cors": "^2.0.3"
+    "koa2-cors": "^2.0.3",
+    "superagent": "^3.5.2",
+    "superagent-charset": "^1.2.0"
   }
 }
