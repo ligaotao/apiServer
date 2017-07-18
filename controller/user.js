@@ -10,7 +10,18 @@ class UserControl {
       movies = await model.list()
       cache.setData('movies', movies)
     }
-    ctx.body = movies
+    let data = {
+      code: 200,
+      data: movies
+    }
+    ctx.body = data
+  }
+  static async getMoviesMore (ctx) {
+    let mores = await model.moviesMore('/html/gndy/jddy/20170715/54515.html')
+    ctx.body = {
+      data: mores,
+      code: 200
+    }
   }
 }
 module.exports =  UserControl

@@ -4,10 +4,24 @@ require('superagent-charset')(request)
 
 class Movies {
   constructor () {
-    this.root = 'http://www.dytt8.net/'
+    this.root = 'http://www.dytt8.net'
   }
   async homeHtmlList () {
-    return request.get(`${this.root}index.htm`).charset('gbk')
+    return request.get(`${this.root}/index.htm`).charset('gbk')
+  }
+  async urlToRequest (url) {
+    return request.get(`${this.root + url}`).charset('gbk')
+  }
+  async moviesMore (more) {
+    let res = await this.urlToRequest(more)
+    const $ = cheerio.load(res.res.text)
+    const img = $('#Zoom').find('img')
+    const url = $('#Zoom a').attr('href')
+    return {
+      banner: img.get(0).src,
+      pics: img.get(1).src,
+      url
+    }
   }
   async list (movieKey) {
     let res = await this.homeHtmlList()
