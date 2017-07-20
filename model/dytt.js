@@ -19,7 +19,6 @@ class Movies {
     const url = $('#Zoom a').attr('href')
     return {
       banner: img.get(0).src,
-      pics: img.get(1).src,
       url
     }
   }
