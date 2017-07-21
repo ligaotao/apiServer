@@ -18,10 +18,7 @@ class UserControl {
   }
   static async getMoviesMore (ctx) {
     let mores = await model.moviesMore('/html/gndy/jddy/20170715/54515.html')
-    ctx.body = {
-      data: mores,
-      code: 200
-    }
+    ctx.body = mores
   }
 }
 module.exports =  UserControl

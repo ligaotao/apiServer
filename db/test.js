@@ -23,14 +23,18 @@ var saveMovie = async function () {
 };
 
 // 根据list 生成图片
-var setMore = function () {
-    Movie.find({}, function (err, list) {
+var setMore = async function () {
+    Movie.find({}, async function (err, list) {
         if (list) {
-            list.forEach(async (k, i) => {
+            let sum = list.length
+            let process = 0
+            await Promise.all(list.map(async (k, i) => {
                 let res = await Dytt.moviesMore(k.url)
-                console.log(i)
-                await new Promise(function (reslove, reject) {
-                    Movie.update({_id: k["_id"]}, {$set: {img: res.banner, ftp: res.url}}, function (err, docs) {
+                return await new Promise(function (reslove, reject) {
+                    Movie.update({_id: k["_id"]}, {$set: {img: res.banner, ftp: res.url, thumb: res.thumb, meta: res.meta}}, function (err, docs) {
+                        process++
+                        console.log('已完成 ', process)
+                        console.log('剩余 ', sum - process)
                         if (err) {
                             reject(err)
                         } else {
@@ -38,7 +42,7 @@ var setMore = function () {
                         }
                     })
                 })
-            })
+            }))
         }
     })
 }

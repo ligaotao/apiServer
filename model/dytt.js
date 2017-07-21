@@ -18,8 +18,10 @@ class Movies {
     const img = $('#Zoom').find('img')
     const url = $('#Zoom a').attr('href')
     return {
-      banner: img.get(0).src,
-      url
+      banner: img.eq(0).attr('src'),
+      url,
+      meta: $('#Zoom p').eq(0).text(),
+      thumb: img.eq(1).attr('src')
     }
   }
   async list (movieKey) {
