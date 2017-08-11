@@ -7,6 +7,15 @@
   <title>Document</title>
 </head>
 <body>
-  <%= title %>
+  <%include hello.html %>
+  <ul>
+    <% for(var i=0; i<movies.length; i++) {%>
+    <li>
+      <img src="<%= movies[i].img%>" >
+      <%= movies[i].img%>
+      <%= movies[i].name %>
+    </li>
+    <% } %>
+  </ul>
 </body>
 </html>

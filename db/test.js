@@ -21,7 +21,6 @@ var saveMovie = async function () {
         }
     })
 };
-
 // 根据list 生成图片
 var setMore = async function () {
     Movie.find({}, async function (err, list) {
