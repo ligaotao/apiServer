@@ -1,16 +1,18 @@
 const koa = require('koa')
+const serve = require('koa-static')
 const router = require('./router')
 const cors = require('koa2-cors')
 const loggerAsync = require('./middleware/logger-async.js')
 const app = new koa()
 const views = require('koa-views')
-console.log(__dirname)
+
 app
   .use(views(__dirname + '/views', {
     map: {
       html: 'ejs'
     }
   }))
+  .use(serve(__dirname))  
   .use(cors())
   .use(router.routes())
   .use(loggerAsync())
