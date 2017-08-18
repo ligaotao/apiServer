@@ -4,7 +4,7 @@ class Movies {
     static async getList (ctx) {
         const movies = await movieDB.findMovie()
         ctx.state = {
-            movies: movies.slice(0, 10)
+            movies: movies
         }
         await ctx.render('list.html')
     }
