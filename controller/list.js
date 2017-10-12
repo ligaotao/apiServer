@@ -8,5 +8,8 @@ class Movies {
         }
         await ctx.render('list.html')
     }
+    static async home (ctx) {
+        await ctx.render('index.html')
+    }
 }
 module.exports =  Movies
