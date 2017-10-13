@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" class="app">
+<head>  
+  <meta charset="utf-8" />
+  <title>Musik | Web Application</title>
+  <% include common/link.html %>
+</head>
+<body class="">
+  <section class="vbox">
+    <% include common/head.html %>
+    <section>
+      <section class="hbox stretch">
+        <!-- .aside -->
+        <aside class="bg-black dk nav-xs aside hidden-print" id="nav">          
+          <section class="vbox">
+            <% include common/nav.html %>
+            
+            <footer class="footer hidden-xs no-padder text-center-nav-xs">
+              <div class="bg hidden-xs ">
+                  <div class="dropdown dropup wrapper-sm clearfix">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <span class="thumb-sm avatar pull-left m-l-xs">                        
+                        <img src="/static/images/a3.png" class="dker" alt="...">
+                        <i class="on b-black"></i>
+                      </span>
+                      <span class="hidden-nav-xs clear">
+                        <span class="block m-l">
+                          <strong class="font-bold text-lt">John.Smith</strong> 
+                          <b class="caret"></b>
+                        </span>
+                        <span class="text-muted text-xs block m-l">Art Director</span>
+                      </span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight aside text-left">                      
+                      <li>
+                        <span class="arrow bottom hidden-nav-xs"></span>
+                        <a href="#">Settings</a>
+                      </li>
+                      <li>
+                        <a href="profile.html">Profile</a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <span class="badge bg-danger pull-right">3</span>
+                          Notifications
+                        </a>
+                      </li>
+                      <li>
+                        <a href="docs.html">Help</a>
+                      </li>
+                      <li class="divider"></li>
+                      <li>
+                        <a href="modal.lockme.html" data-toggle="ajaxModal" >Logout</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>            </footer>
+          </section>
+        </aside>
+        <!-- /.aside -->
+        <section id="content">
+            <section class="vbox">
+              <section class="scrollable wrapper-lg">
+                <div class="row">
+                  <div class="col-sm-9">
+                    <div class="blog-post">                   
+                      <div class="post-item">
+                        <div class="post-media" style="height: 300px; overflow: hidden">
+                          <img src="<%=movies.img%>" class="img-full">
+                        </div>
+                        <div class="caption wrapper-lg">
+                          <h2 class="post-title"><a href="#"><%=movies.name%></a></h2>
+                          <div class="post-sum">
+                              <div class="list-group no-radius alt">
+                                <a class="list-group-item" href="#">
+                                  <label class="label bg-info m-l-xs btn-ftp pull-right" style="cursor:pointer" data-clipboard-text="<%=movies.ftp%>">复制地址</label>
+                                  <i class="icon-link"></i> 
+                                  下载地址
+                                </a>
+                              </div>
+                            <p><%=movies.meta%></p>
+                            <img src="<%=movies.thumb%>" class="img-full">
+                          </div>
+                          <div class="line line-lg"></div>
+                          <div class="text-muted">
+                            <i class="fa fa-user icon-muted"></i> by <a href="#" class="m-r-sm">Admin</a>
+                            <i class="fa fa-clock-o icon-muted"></i> Feb 20, 2013
+                            <a href="#" class="m-l-sm"><i class="fa fa-comment-o icon-muted"></i> 2 comments</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <h4 class="m-t-lg m-b">3 Comments</h4>
+                    <section class="comment-list block">
+                      <article id="comment-id-1" class="comment-item">
+                        <a class="pull-left thumb-sm">
+                          <img src="/static/images/a0.png" class="img-circle">
+                        </a>
+                        <section class="comment-body m-b">
+                          <header>
+                            <a href="#"><strong>John smith</strong></a>
+                            <label class="label bg-info m-l-xs">Editor</label> 
+                            <span class="text-muted text-xs block m-t-xs">
+                              24 minutes ago
+                            </span>
+                          </header>
+                          <div class="m-t-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum.</div>
+                        </section>
+                      </article>
+                      <!-- .comment-reply -->
+                      <article id="comment-id-2" class="comment-item comment-reply">
+                        <a class="pull-left thumb-sm">
+                          <img src="/static/images/a1.png" class="img-circle">
+                        </a>
+                        <section class="comment-body m-b">
+                          <header>
+                            <a href="#"><strong>John smith</strong></a>
+                            <label class="label bg-dark m-l-xs">Admin</label> 
+                            <span class="text-muted text-xs block m-t-xs">
+                              26 minutes ago
+                            </span>
+                          </header>
+                          <div class="m-t-sm">Lorem ipsum dolor sit amet, consecteter adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.</div>
+                        </section>
+                      </article>
+                      <!-- / .comment-reply -->
+                      <article id="comment-id-2" class="comment-item">
+                        <a class="pull-left thumb-sm">
+                          <img src="/static/images/a2.png" class="img-circle">
+                        </a>
+                        <section class="comment-body m-b">
+                          <header>
+                            <a href="#"><strong>John smith</strong></a>
+                            <label class="label bg-dark m-l-xs">Admin</label> 
+                            <span class="text-muted text-xs block m-t-xs">
+                              26 minutes ago
+                            </span>
+                          </header>
+                          <blockquote class="m-t">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                          </blockquote>
+                          <div class="m-t-sm">Lorem ipsum dolor sit amet, consecteter adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.</div>
+                        </section>
+                      </article>
+                    </section>
+                    <h4 class="m-t-lg m-b">Leave a comment</h4>
+                    <form>
+                      <div class="form-group pull-in clearfix">
+                        <div class="col-sm-6">
+                          <label>Your name</label>
+                          <input type="text" class="form-control" placeholder="Name">
+                        </div>
+                        <div class="col-sm-6">
+                          <label >Email</label>
+                          <input type="email" class="form-control" placeholder="Enter email">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label>Comment</label>
+                        <textarea class="form-control" rows="5" placeholder="Type your comment"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-success">Submit comment</button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col-sm-3">
+                    <h5 class="font-bold">Categories</h5>
+                    <ul class="list-group">
+                      <li class="list-group-item">
+                        <a href="#">
+                          <span class="badge pull-right">15</span>
+                          Photograph
+                        </a>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="#">
+                          <span class="badge pull-right">30</span>
+                          Life style
+                        </a>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="#">
+                          <span class="badge pull-right">9</span>
+                          Food
+                        </a>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="#">
+                          <span class="badge pull-right">4</span>
+                          Travel world
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="tags m-b-lg l-h-2x">
+                      <a href="#" class="label bg-primary">Bootstrap</a> <a href="#" class="label bg-primary">Application</a> <a href="#" class="label bg-primary">Apple</a> <a href="#" class="label bg-primary">Less</a> <a href="#" class="label bg-primary">Theme</a> <a href="#" class="label bg-primary">Wordpress</a>
+                    </div>
+                    <h5 class="font-bold">Recent Posts</h5>
+                    <div>
+                      <article class="media">
+                        <a class="pull-left thumb thumb-wrapper m-t-xs">
+                          <img src="/static/images/m1.jpg">
+                        </a>
+                        <div class="media-body">                        
+                          <a href="#" class="font-semibold">Bootstrap 3: What you need to know</a>
+                          <div class="text-xs block m-t-xs"><a href="#">Travel</a> 2 minutes ago</div>
+                        </div>
+                      </article>
+                      <div class="line"></div>
+                      <article class="media m-t-none">
+                        <a class="pull-left thumb thumb-wrapper m-t-xs">
+                          <img src="/static/images/m2.jpg">
+                        </a>
+                        <div class="media-body">                        
+                          <a href="#" class="font-semibold">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
+                          <div class="text-xs block m-t-xs"><a href="#">Design</a> 2 hours ago</div>
+                        </div>
+                      </article>
+                      <div class="line"></div>
+                      <article class="media m-t-none">
+                        <a class="pull-left thumb thumb-wrapper m-t-xs">
+                          <img src="/static/images/m3.jpg">
+                        </a>
+                        <div class="media-body">                        
+                          <a href="#" class="font-semibold">Sed diam nonummy nibh euismod tincidunt ut laoreet</a>
+                          <div class="text-xs block m-t-xs"><a href="#">MFC</a> 1 week ago</div>
+                        </div>
+                      </article>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </section>
+            <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+          </section>
+      </section>
+    </section>    
+  </section>
+  <script src="https://cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js"></script>
+  <script>
+    var ftpDown = new Clipboard('.btn-ftp');
+    ftpDown.on('success', function(e) {
+      console.log(e)
+      alert('复制成功')
+      e.clearSelection();
+    })
+    ftpDown.on('error', function(e) {
+      console.log(e)
+      alert('复制失败')
+    })
+  </script>
+  <script src="/static/js/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="/static/js/bootstrap.js"></script>
+  <!-- App -->
+  <script src="/static/js/app.js"></script>  
+  <script src="/static/js/slimscroll/jquery.slimscroll.min.js"></script>
+  
+  <script src="/static/js/app.plugin.js"></script>
+  <script type="text/javascript" src="/static/js/jPlayer/jquery.jplayer.min.js"></script>
+  <script type="text/javascript" src="/static/js/jPlayer/add-on/jplayer.playlist.min.js"></script>
+  <script type="text/javascript" src="/static/js/jPlayer/demo.js"></script>
+</body>
+</html>

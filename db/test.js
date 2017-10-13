@@ -4,16 +4,31 @@ var Dytt = require('../model/dytt');
 var saveMovie = async function () {
     var list = await Dytt.list();
     var arr = [];
+    var maxIdMovie = await Movie.findOne({}).sort({id: -1})
+    var id = maxIdMovie ? maxIdMovie.id : 0
+    id++
     Object.keys(list).forEach(k => {
         list[k].forEach(kk => {
             let obj = kk
-            obj.name = obj.txt
             obj.type = k
+            obj.name = obj.txt
+            obj.id = id
+            id++
+            var re = /\《([^》《]*)\》/i
+            var result = obj.txt.match(re)
+            try {
+                obj.name = result[1] 
+            } catch (err) {
+                console.log(err)
+            }
+            obj.detailName = obj.txt
+            // (?<=《)([^》]+)(?=》)
             delete obj.txt
             arr.push(obj)
         })
     });
-    Movie.insertMany(arr, function (err, docs) {
+    console.log(arr)
+    await Movie.insertMany(arr).then(function (err, docs) {
         if (err) {
             console.log(err)
         } else {
@@ -45,8 +60,13 @@ var setMore = async function () {
         }
     })
 }
-// saveMovie()
-setMore()
+async function initSql () {
+    console.log('电影列表----------')
+    await saveMovie()
+    console.log('电影详情----------')
+    await setMore()
+}
+initSql()
 function insert () {
     var movie = new Movie({
         name: '侠客行',

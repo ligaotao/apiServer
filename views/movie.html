@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" class="app">
+<head>  
+  <meta charset="utf-8" />
+  <title>Musik | Web Application</title>
+  <% include common/link.html %>
+</head>
+<body class="">
+  <section class="vbox">
+    <% include common/head.html %>
+    <section>
+      <section class="hbox stretch">
+        <!-- .aside -->
+        <aside class="bg-black dk nav-xs aside hidden-print" id="nav">          
+          <section class="vbox">
+            <% include common/nav.html %>
+            
+            <footer class="footer hidden-xs no-padder text-center-nav-xs">
+              <div class="bg hidden-xs ">
+                  <div class="dropdown dropup wrapper-sm clearfix">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <span class="thumb-sm avatar pull-left m-l-xs">                        
+                        <img src="/static/images/a3.png" class="dker" alt="...">
+                        <i class="on b-black"></i>
+                      </span>
+                      <span class="hidden-nav-xs clear">
+                        <span class="block m-l">
+                          <strong class="font-bold text-lt">John.Smith</strong> 
+                          <b class="caret"></b>
+                        </span>
+                        <span class="text-muted text-xs block m-l">Art Director</span>
+                      </span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight aside text-left">                      
+                      <li>
+                        <span class="arrow bottom hidden-nav-xs"></span>
+                        <a href="#">Settings</a>
+                      </li>
+                      <li>
+                        <a href="profile.html">Profile</a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <span class="badge bg-danger pull-right">3</span>
+                          Notifications
+                        </a>
+                      </li>
+                      <li>
+                        <a href="docs.html">Help</a>
+                      </li>
+                      <li class="divider"></li>
+                      <li>
+                        <a href="modal.lockme.html" data-toggle="ajaxModal" >Logout</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>            </footer>
+          </section>
+        </aside>
+        <!-- /.aside -->
+        <section id="content">
+          <section class="vbox" id="bjax-el">
+            <section class="scrollable padder-lg">
+              <h2 class="font-thin m-b">Video</h2>
+              <div class="row row-sm">
+                <div class="col-xs-12 col-sm-4">
+                  <div class="item">
+                    <div class="pos-rlt">
+                      <div class="item-overlay opacity r r-2x bg-black">
+                        <div class="center text-center m-t-n">
+                          <a href="video-detail.html"><i class="fa fa-play-circle i-2x"></i></a>
+                        </div>
+                      </div>
+                      <div class="top">
+                        <span class="badge bg-dark m-l-sm m-t-sm">03:20</span>
+                      </div>
+                      <a href="video-detail.html"><img src="/static/images/m40.jpg" alt="" class="r r-2x img-full"></a>
+                    </div>
+                    <div class="padder-v">
+                      <a href="video-detail.html" class="text-ellipsis">Tempered Song</a>
+                      <a href="video-detail.html" class="text-ellipsis text-xs text-muted">Miaow</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                  <div class="item">
+                    <div class="pos-rlt">
+                      <div class="item-overlay opacity r r-2x bg-black">
+                        <div class="center text-center m-t-n">
+                          <a href="video-detail.html"><i class="fa fa-play-circle i-2x"></i></a>
+                        </div>
+                      </div>
+                      <div class="top">
+                        <span class="badge bg-dark m-l-sm m-t-sm">02:10</span>
+                      </div>
+                      <a href="video-detail.html"><img src="/static/images/m41.jpg" alt="" class="r r-2x img-full"></a>
+                    </div>
+                    <div class="padder-v">
+                      <a href="video-detail.html" class="text-ellipsis">Morbi id neque quam</a>
+                      <a href="video-detail.html" class="text-ellipsis text-xs text-muted">Phasellus</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                  <div class="item">
+                    <div class="pos-rlt">
+                      <div class="item-overlay opacity r r-2x bg-black">
+                        <div class="center text-center m-t-n">
+                          <a href="video-detail.html"><i class="fa fa-play-circle i-2x"></i></a>
+                        </div>
+                      </div>
+                      <div class="top">
+                        <span class="badge bg-dark m-l-sm m-t-sm">05:40</span>
+                      </div>
+                      <a href="video-detail.html"><img src="/static/images/m42.jpg" alt="" class="r r-2x img-full"></a>
+                    </div>
+                    <div class="padder-v">
+                      <a href="video-detail.html" class="text-ellipsis">Aliquam sollicitudin venenatis ipsum</a>
+                      <a href="video-detail.html" class="text-ellipsis text-xs text-muted">Malesuada</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h3 class="font-thin m-b">Video List</h3>
+              <div class="row row-sm movie-list">
+                <% for(var i=0; i<movies.length; i++) {%>
+                <div class="col-xs-6 col-sm-4 col-md-2">
+                  <div class="item">
+                    <div class="pos-rlt">
+                      <div class="item-overlay opacity r r-2x bg-black">
+                        <div class="center text-center m-t-n">
+                          <a href="/movie/detail/<%=movies[i].id %>"><i class="fa fa-play-circle i-2x"></i></a>
+                        </div>
+                      </div>
+                      <a href="/movie/detail/<%=movies[i].id %>"><img src="<%=movies[i].img %>" alt="" class="r r-2x img-full movie-img"></a>
+                    </div>
+                    <div class="padder-v">
+                      <a href="/movie/detail/<%=movies[i].id %>" class="text-ellipsis"><%=movies[i].name %></a>
+                      <a href="/movie/detail/<%=movies[i].id %>" class="text-ellipsis text-xs text-muted"><%=movies[i].typeDesc %></a>
+                    </div>
+                  </div>
+                </div>
+                <% } %>               
+              </div>
+              <div class="pages"></div>
+            </section>
+          </section>
+          <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+        </section>
+      </section>
+    </section>    
+  </section>
+  <script src="/static/js/jquery.min.js"></script>
+  <script src="http://www.jq22.com/demo/jQueryPager20160918/js/jquery.page.js"></script>
+  <script>
+      $(".pages").createPage({
+        pageCount:<%=page%>,
+        current:1,
+        backFn:function(pcoupagedds){
+            $.ajax({
+              method: 'GET',
+              url: '/api/movies',
+              data: {
+                page: pcoupagedds
+              },
+              success: function(data) {
+              }
+            })
+        }
+    })
+    function dataToHtml (data) {
+      var html = ''
+      data.forEach(function(k) {
+        html += '<div class="col-xs-6 col-sm-4 col-md-2">'+
+                  '<div class="item">'+
+                    '<div class="pos-rlt">'+
+                      '<div class="item-overlay opacity r r-2x bg-black">'+
+                        <div class="center text-center m-t-n">
+                          <a href="/movie/detail/<%=movies[i].id %>"><i class="fa fa-play-circle i-2x"></i></a>
+                        </div>
+                      </div>
+                      <a href="/movie/detail/<%=movies[i].id %>"><img src="<%=movies[i].img %>" alt="" class="r r-2x img-full movie-img"></a>
+                    </div>
+                    <div class="padder-v">
+                      <a href="/movie/detail/<%=movies[i].id %>" class="text-ellipsis"><%=movies[i].name %></a>
+                      <a href="/movie/detail/<%=movies[i].id %>" class="text-ellipsis text-xs text-muted"><%=movies[i].typeDesc %></a>
+                    </div>
+                  </div>
+                </div>
+      })
+    }
+    </script>
+  <!-- Bootstrap -->
+  <script src="/static/js/bootstrap.js"></script>
+  <!-- App -->
+  <script src="/static/js/app.js"></script>  
+  <script src="/static/js/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/static/js/app.plugin.js"></script>
+  <script type="text/javascript" src="/static/js/jPlayer/jquery.jplayer.min.js"></script>
+  <script type="text/javascript" src="/static/js/jPlayer/add-on/jplayer.playlist.min.js"></script>
+  <script type="text/javascript" src="/static/js/jPlayer/demo.js"></script>
+</body>
+</html>
