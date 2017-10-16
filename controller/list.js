@@ -31,7 +31,7 @@ class Movies {
         console.log(ctx.params)
         var id = ctx.params.id
         const movies = await movieDB.findOneMovie({id})
-        movies.typeDesc = typeToDesc[k.type]
+        movies.typeDesc = typeToDesc[movies.type]
         await ctx.render('movie-detail.html', {movies})
     }
 }

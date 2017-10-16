@@ -168,27 +168,6 @@
             })
         }
     })
-    function dataToHtml (data) {
-      var html = ''
-      data.forEach(function(k) {
-        html += '<div class="col-xs-6 col-sm-4 col-md-2">'+
-                  '<div class="item">'+
-                    '<div class="pos-rlt">'+
-                      '<div class="item-overlay opacity r r-2x bg-black">'+
-                        <div class="center text-center m-t-n">
-                          <a href="/movie/detail/<%=movies[i].id %>"><i class="fa fa-play-circle i-2x"></i></a>
-                        </div>
-                      </div>
-                      <a href="/movie/detail/<%=movies[i].id %>"><img src="<%=movies[i].img %>" alt="" class="r r-2x img-full movie-img"></a>
-                    </div>
-                    <div class="padder-v">
-                      <a href="/movie/detail/<%=movies[i].id %>" class="text-ellipsis"><%=movies[i].name %></a>
-                      <a href="/movie/detail/<%=movies[i].id %>" class="text-ellipsis text-xs text-muted"><%=movies[i].typeDesc %></a>
-                    </div>
-                  </div>
-                </div>
-      })
-    }
     </script>
   <!-- Bootstrap -->
   <script src="/static/js/bootstrap.js"></script>

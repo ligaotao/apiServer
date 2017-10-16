@@ -7,7 +7,7 @@ router
   .get('/api/moviesMore', UserControl.getMoviesMore)
   .get('/api/updateBlog', Blog.updataBlog)
   .get('/list', MoviesControl.getList)
-  .get('/home', MoviesControl.home)
+  .get('/', MoviesControl.home)
   .get('/movie', MoviesControl.movie)
   .get('/movie/detail/:id', MoviesControl.movieDetail)
 module.exports = router
