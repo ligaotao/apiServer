@@ -161,13 +161,44 @@
               method: 'GET',
               url: '/api/movies',
               data: {
-                page: pcoupagedds
+                search: $('[name=search]').val(),
+                page: pcoupagedds,
+                limt: 18
               },
               success: function(data) {
+                var html = dataToHtml(data)
+                console.log(html)
+                $('#content .movie-list').html(html)
               }
             })
         }
     })
+
+    function dataToHtml (data) {
+      var html = ''
+      if (data.length == 0) {
+        html = '没有找到任何结果'
+      }
+      data.forEach(function(k) {
+        html += '<div class="col-xs-6 col-sm-4 col-md-2">'+
+                  '<div class="item">'+
+                    '<div class="pos-rlt">'+
+                      '<div class="item-overlay opacity r r-2x bg-black">'+
+                        '<div class="center text-center m-t-n">'+
+                          '<a href="/movie/detail/' + k.id + '>"><i class="fa fa-play-circle i-2x"></i></a>'+
+                        '</div>'+
+                      '</div>'+
+                      '<a href="/movie/detail/'+ k.id +'"><img src="'+ k.img +'" alt="" class="r r-2x img-full movie-img"></a>'+
+                    '</div>'+
+                    '<div class="padder-v">'+
+                      '<a href="/movie/detail/' + k.id + '" class="text-ellipsis">' + k.name + '</a>'+
+                      '<a href="/movie/detail/'+ k.id +'" class="text-ellipsis text-xs text-muted">' + k.typeDesc + '</a>'+
+                    '</div>'+
+                  '</div>'+
+                '</div>'
+      })
+      return html
+    }
     </script>
   <!-- Bootstrap -->
   <script src="/static/js/bootstrap.js"></script>

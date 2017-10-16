@@ -9,7 +9,8 @@ var movieSchema = mongoose.Schema({
     ftp: String,
     url: String,
     meta: String,
-    type: String
+    type: String,
+    status: Number
 })
 // 创建model
 

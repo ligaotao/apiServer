@@ -2,7 +2,7 @@ var Movie = require('./movie');
 
 function findMovie (filter = {}, skip = 0, limit = 20) {
     return new Promise(function (resolve, reject) {
-        Movie.find(filter).skip(skip).limit(limit).find(function (err, list) {
+        Movie.find(filter).skip((skip - 1) * limit).limit(limit).find(function (err, list) {
             if (err) {
                 reject(err)
             } else {
