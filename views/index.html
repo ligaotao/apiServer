@@ -912,5 +912,69 @@
   <script type="text/javascript" src="/static/js/jPlayer/jquery.jplayer.min.js"></script>
   <script type="text/javascript" src="/static/js/jPlayer/add-on/jplayer.playlist.min.js"></script>
   <script type="text/javascript" src="/static/js/jPlayer/demo.js"></script>
+
+  <script>
+    $.ajax({
+      type: "get",
+      async: false,
+      url: "http://music.qq.com/musicbox/shop/v3/data/hit/hit_newsong.js",
+      dataType: "jsonp",
+      data: {num: 10},
+      jsonp: "callback",
+      jsonpCallback: "JsonCallback",
+      scriptCharset: 'GBK',//设置编码，否则会乱码
+      success: function(data) {
+        console.log(data)
+        $('.row-sm').html(dataToHtml(data.songlist.slice(0, 20)))     
+      },
+      error: function() {
+        alert('fail');
+      }
+    })
+    function dataToHtml (arr) {
+      var html = ''
+      arr.forEach(function(k) {
+        var time = k.playtime
+        var min = ~~(time / 60) > 9 ? ~~(time / 60) : '0' + ~~(time / 60)
+        var s = time % 60 > 9 ? time % 60 : '0' + time % 60
+        time = min + ':' + s
+        html += '<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">' + 
+                      '<div class="item">'+
+                        '<div class="pos-rlt">' +
+                          '<div class="bottom">'+
+                            '<span class="badge bg-info m-l-sm m-b-sm">'+ time + '</span>'+
+                          '</div>'+
+                          '<div class="item-overlay opacity r r-2x bg-black">'+
+                            '<div class="text-info padder m-t-sm text-sm">'+
+                              '<i class="fa fa-star"></i>'+
+                              '<i class="fa fa-star"></i>'+
+                              '<i class="fa fa-star"></i>'+
+                              '<i class="fa fa-star"></i>'+
+                              '<i class="fa fa-star-o text-muted"></i>'+
+                            '</div>'+
+                            '<div class="center text-center m-t-n">'+
+                              '<a href="#"><i class="icon-control-play i-2x"></i></a>'+
+                            '</div>'+
+                            '<div class="bottom padder m-b-sm">'+
+                              '<a href="#" class="pull-right">'+
+                                '<i class="fa fa-heart-o"></i>'+
+                              '</a>'+
+                              '<a href="#">'+
+                                '<i class="fa fa-plus-circle"></i>'+
+                              '</a>'+
+                            '</div>'+
+                          '</div>'+
+                          '<a href="#"><img src="/static/images/p1.jpg" alt="" class="r r-2x img-full"></a>'+
+                        '</div>'+
+                        '<div class="padder-v">'+
+                          '<a href="#" class="text-ellipsis">Tempered Song</a>'+
+                          '<a href="#" class="text-ellipsis text-xs text-muted">Miaow</a>'+
+                        '</div>'+
+                      '</div>'+
+                    '</div>'
+      })
+      return html
+    }
+  </script>
 </body>
 </html>
