@@ -83,6 +83,8 @@ async function initSql () {
     await saveMovie()
     console.log('电影详情----------')
     await setMore()
+    process.exit()
+    
 }
 initSql()
 function insert () {
