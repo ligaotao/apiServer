@@ -35,7 +35,7 @@ var saveMovie = async function () {
                 var re = /\《([^》《]*)\》/i
                 var result = obj.txt.match(re)
                 try {
-                    obj.name = result[1] 
+                    obj.name = result[1]
                 } catch (err) {
                     console.log(result, obj)
                 }
@@ -84,7 +84,7 @@ async function initSql () {
     console.log('电影详情----------')
     await setMore()
     process.exit()
-    
+
 }
 initSql()
 function insert () {

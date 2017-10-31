@@ -926,7 +926,26 @@
       },
       error: function() {
         alert('fail');
+      }mp2121         qwddssdfdsf
+    })
+    $('body').on('click', '.item .icon-control-play', function() {
+      var id = $(this).data('id')
+      $.ajax({
+      type: "get",
+      async: false,
+      url: "http://music.ligaotao.cn/music/url",
+      dataType: "json",
+      data: {id: id},
+      success: function(data) {
+        var mp3 = ''
+        if (data && data.data.length > 0) {
+          mp3 = data.data[0].url
+          $('audio').attr('src', mp3)
+        }
+      },
+      error: function() {
       }
+    })
     })
     function dataToHtml (arr) {
       var html = ''
@@ -950,7 +969,7 @@
                               '<i class="fa fa-star-o text-muted"></i>'+
                             '</div>'+
                             '<div class="center text-center m-t-n">'+
-                              '<a href="#"><i class="icon-control-play i-2x"></i></a>'+
+                              '<a href="#"><i class="icon-control-play i-2x" data-id='+k.id+'></i></a>'+
                             '</div>'+
                             '<div class="bottom padder m-b-sm">'+
                               '<a href="#" class="pull-right">'+
@@ -961,11 +980,11 @@
                               '</a>'+
                             '</div>'+
                           '</div>'+
-                          '<a href="#"><img src="'+k.artists[0].picUrl+'" alt="" class="r r-2x img-full"></a>'+
+                          '<a href="#"><img src="'+k.album.picUrl+'" alt="" class="r r-2x img-full"></a>'+
                         '</div>'+
                         '<div class="padder-v">'+
                           '<a href="#" class="text-ellipsis">'+k.name+'</a>'+
-                          '<a href="#" class="text-ellipsis text-xs text-muted">Miaow</a>'+
+                          '<a href="#" class="text-ellipsis text-xs text-muted">'+k.artists[0].name+'</a>'+
                         '</div>'+
                       '</div>'+
                     '</div>'
