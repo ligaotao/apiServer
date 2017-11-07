@@ -926,26 +926,7 @@
       },
       error: function() {
         alert('fail');
-      }mp2121         qwddssdfdsf
-    })
-    $('body').on('click', '.item .icon-control-play', function() {
-      var id = $(this).data('id')
-      $.ajax({
-      type: "get",
-      async: false,
-      url: "http://music.ligaotao.cn/music/url",
-      dataType: "json",
-      data: {id: id},
-      success: function(data) {
-        var mp3 = ''
-        if (data && data.data.length > 0) {
-          mp3 = data.data[0].url
-          $('audio').attr('src', mp3)
-        }
-      },
-      error: function() {
       }
-    })
     })
     function dataToHtml (arr) {
       var html = ''
@@ -980,7 +961,7 @@
                               '</a>'+
                             '</div>'+
                           '</div>'+
-                          '<a href="#"><img src="'+k.album.picUrl+'" alt="" class="r r-2x img-full"></a>'+
+                          '<a href="#"><img src="'+k.album.picUrl+'" alt="" class="r r-2x img-full" style="height:127.5%"></a>'+
                         '</div>'+
                         '<div class="padder-v">'+
                           '<a href="#" class="text-ellipsis">'+k.name+'</a>'+

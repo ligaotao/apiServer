@@ -4,48 +4,6 @@ $(document).ready(function(){
     jPlayer: "#jplayer_N",
     cssSelectorAncestor: "#jp_container_N"
   }, [
-    {
-      title:"Busted Chump",
-      artist:"ADG3",
-      mp3:"http://flatfull.com/themes/assets/musics/adg3com_bustedchump.mp3",
-      poster: "images/m0.jpg"
-    },
-    {
-      title:"Chucked Knuckles",
-      artist:"3studios",
-      mp3:"http://flatfull.com/themes/assets/musics/adg3com_chuckedknuckles.mp3",
-      poster: "images/m0.jpg"
-    },
-    {
-      title:"Cloudless Days",
-      artist:"ADG3 Studios",
-      mp3:"http://flatfull.com/themes/assets/musics/adg3com_cloudlessdays.mp3",
-      poster: "images/m0.jpg"
-    },
-    {
-      title:"Core Issues",
-      artist:"Studios",
-      mp3:"http://flatfull.com/themes/assets/musics/adg3com_coreissues.mp3",
-      poster: "images/m0.jpg"
-    },
-    {
-      title:"Cryptic Psyche",
-      artist:"ADG3",
-      mp3:"http://flatfull.com/themes/assets/musics/adg3com_crypticpsyche.mp3",
-      poster: "images/m0.jpg"
-    },
-    {
-      title:"Electro Freak",
-      artist:"Studios",
-      mp3:"http://flatfull.com/themes/assets/musics/adg3com_electrofreak.mp3",
-      poster: "images/m0.jpg"
-    },
-    {
-      title:"Freeform",
-      artist:"ADG",
-      mp3:"http://flatfull.com/themes/assets/musics/adg3com_freeform.mp3",
-      poster: "images/m0.jpg"
-    }
   ], {
     playlistOptions: {
       enableRemoveControls: true,
@@ -57,7 +15,47 @@ $(document).ready(function(){
     keyEnabled: true,
     audioFullScreen: false
   });
-  
+  console.log(myPlaylist)
+  $('body').on('click', '.item .icon-control-play', function() {
+    var id = $(this).data('id')
+    var $item = $(this).parents('.item')
+    var imgSrc = $item.find('.img-full').attr('src')
+    var name = $item.find('.padder-v .text-ellipsis:first-child').text()
+    var auther = $item.find('.padder-v .text-ellipsis:last-child').text()
+    var mp3List = myPlaylist.playlist
+    var isHas = mp3List.some(function(k, i) {
+      if (k.id === id) {
+        myPlaylist.selects(i)
+      }
+      return k.id === id
+    })
+    if (isHas) {
+      // 如果歌曲列表有了 则直接播放
+      return true;
+    }
+    $.ajax({
+    type: "get",
+    async: false,
+    url: "http://music.ligaotao.cn/music/url",
+    dataType: "json",
+    data: {id: id},
+    success: function(data) {
+      var mp3 = ''
+      if (data && data.data.length > 0) {
+        mp3 = data.data[0].url
+        myPlaylist.add({ // Set the media
+          id: id,
+          title: name,
+          artist: auther,
+          poster: imgSrc,
+          mp3: mp3,
+        })
+      }
+    },
+    error: function() {
+    }
+  })
+  })
   $(document).on($.jPlayer.event.pause, myPlaylist.cssSelector.jPlayer,  function(){
     $('.musicbar').removeClass('animate');
     $('.jp-play-me').removeClass('active');
