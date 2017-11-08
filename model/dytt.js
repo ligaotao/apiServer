@@ -24,6 +24,26 @@ class Movies {
       thumb: img.eq(1).attr('src')
     }
   }
+  async newMovie (page) {
+    let url = `/html/gndy/dyzz/list_23_${page}.html`
+    let res = await this.urlToRequest(url)
+    const $ = cheerio.load(res.res.text)
+    const $movie = $('.co_content8 table').toArray()
+    const total = $('[name=sldd] option:last-child').text() // 获取共多少页
+    var arrList = []
+    $movie.forEach(k => {
+      var $dom = $(k).find('a')
+      arrList.push({
+        txt: $dom.text(),
+        url: $dom.attr('href')
+      })
+    })
+    return {
+      list: arrList,
+      page: page,
+      total: total
+    }
+  }
   async list (movieKey) {
     let res = await this.homeHtmlList()
     const $ = cheerio.load(res.res.text)

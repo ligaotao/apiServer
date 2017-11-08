@@ -26,6 +26,7 @@
     "koa-views": "^6.0.2",
     "koa2-cors": "^2.0.3",
     "mongoose": "^4.11.3",
+    "progress": "^2.0.0",
     "superagent": "^3.5.2",
     "superagent-charset": "^1.2.0"
   }
